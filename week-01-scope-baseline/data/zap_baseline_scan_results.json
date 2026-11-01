@@ -1,0 +1,214 @@
+{
+  "@programName": "OWASP ZAP",
+  "@version": "2.14.0",
+  "@generated": "2026-11-01T18:45:00.000Z",
+  "site": [
+    {
+      "@name": "https://portal.healthtechconnect.io",
+      "@host": "portal.healthtechconnect.io",
+      "@port": "443",
+      "@ssl": "true",
+      "alerts": [
+        {
+          "pluginId": "10038",
+          "alertRef": "10038",
+          "alert": "Content Security Policy (CSP) Header Not Set",
+          "name": "Content Security Policy (CSP) Header Not Set",
+          "riskcode": "3",
+          "confidence": "3",
+          "riskdesc": "High (High)",
+          "desc": "Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross-Site Scripting (XSS) and data injection attacks.",
+          "instances": [
+            {
+              "uri": "https://portal.healthtechconnect.io/dashboard",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": ""
+            },
+            {
+              "uri": "https://portal.healthtechconnect.io/telehealth/room/consent",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "solution": "Ensure that your web server, application server, or load balancer sets a valid Content-Security-Policy header.",
+          "reference": "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html",
+          "cweid": "693",
+          "wascid": "15"
+        },
+        {
+          "pluginId": "10020",
+          "alertRef": "10020",
+          "alert": "Anti-clickjacking Header Not Set",
+          "name": "Anti-clickjacking Header Not Set",
+          "riskcode": "3",
+          "confidence": "2",
+          "riskdesc": "High (Medium)",
+          "desc": "The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against Clickjacking.",
+          "instances": [
+            {
+              "uri": "https://portal.healthtechconnect.io/telehealth/room/consent?patient_id=902184",
+              "method": "GET",
+              "param": "X-Frame-Options",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "solution": "Configure the web server to send an X-Frame-Options header with a value of 'DENY' or 'SAMEORIGIN', or a Content-Security-Policy header with frame-ancestors directive.",
+          "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
+          "cweid": "1021",
+          "wascid": "15"
+        },
+        {
+          "pluginId": "10035",
+          "alertRef": "10035",
+          "alert": "Strict-Transport-Security Header Not Set",
+          "name": "Strict-Transport-Security Header Not Set",
+          "riskcode": "2",
+          "confidence": "3",
+          "riskdesc": "Medium (High)",
+          "desc": "HTTP Strict Transport Security (HSTS) is an optional response header that can be used to tell web browsers to only use HTTPS connections.",
+          "instances": [
+            {
+              "uri": "https://portal.healthtechconnect.io/",
+              "method": "GET",
+              "param": "Strict-Transport-Security",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "solution": "Ensure that your web server, load balancer, or reverse proxy sets the Strict-Transport-Security header with a long max-age (e.g. 31536000).",
+          "reference": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html",
+          "cweid": "319",
+          "wascid": "15"
+        },
+        {
+          "pluginId": "10037",
+          "alertRef": "10037",
+          "alert": "Server Leaks Information via 'Referrer-Policy' Header",
+          "name": "Server Leaks Information via 'Referrer-Policy' Header",
+          "riskcode": "2",
+          "confidence": "2",
+          "riskdesc": "Medium (Medium)",
+          "desc": "The Referrer-Policy header is not explicitly set, causing modern browsers to fall back to default behavior which may transmit sensitive query parameters to external origins.",
+          "instances": [
+            {
+              "uri": "https://portal.healthtechconnect.io/patient/records?patient_mrn=MRN-902184-US&ref=oncology",
+              "method": "GET",
+              "param": "Referrer-Policy",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "solution": "Set 'Referrer-Policy: strict-origin-when-cross-origin' or 'no-referrer'.",
+          "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
+          "cweid": "200",
+          "wascid": "13"
+        },
+        {
+          "pluginId": "10021",
+          "alertRef": "10021",
+          "alert": "X-Content-Type-Options Header Missing",
+          "name": "X-Content-Type-Options Header Missing",
+          "riskcode": "1",
+          "confidence": "2",
+          "riskdesc": "Low (Medium)",
+          "desc": "The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'.",
+          "instances": [
+            {
+              "uri": "https://portal.healthtechconnect.io/assets/index-D7b3qL1a.js",
+              "method": "GET",
+              "param": "X-Content-Type-Options",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "solution": "Ensure that the application/webserver sets the 'X-Content-Type-Options: nosniff' header.",
+          "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options",
+          "cweid": "693",
+          "wascid": "15"
+        }
+      ]
+    },
+    {
+      "@name": "https://api.healthtechconnect.io",
+      "@host": "api.healthtechconnect.io",
+      "@port": "443",
+      "@ssl": "true",
+      "alerts": [
+        {
+          "pluginId": "10010",
+          "alertRef": "10010",
+          "alert": "Cookie No HttpOnly Flag",
+          "name": "Cookie No HttpOnly Flag",
+          "riskcode": "2",
+          "confidence": "3",
+          "riskdesc": "Medium (High)",
+          "desc": "A cookie has been set without the HttpOnly flag, which permits the cookie to be accessed by client-side script.",
+          "instances": [
+            {
+              "uri": "https://api.healthtechconnect.io/v1/auth/login",
+              "method": "POST",
+              "param": "htc_auth",
+              "attack": "",
+              "evidence": "Set-Cookie: htc_auth="
+            }
+          ],
+          "solution": "Ensure that the HttpOnly flag is set for all cookies containing authentication or session tokens.",
+          "reference": "https://owasp.org/www-community/HttpOnly",
+          "cweid": "1004",
+          "wascid": "13"
+        },
+        {
+          "pluginId": "10011",
+          "alertRef": "10011",
+          "alert": "Cookie Without Secure Flag",
+          "name": "Cookie Without Secure Flag",
+          "riskcode": "2",
+          "confidence": "3",
+          "riskdesc": "Medium (High)",
+          "desc": "A cookie has been set without the Secure flag, which means that the cookie can be transmitted over unencrypted connections.",
+          "instances": [
+            {
+              "uri": "https://api.healthtechconnect.io/v1/auth/login",
+              "method": "POST",
+              "param": "htc_auth",
+              "attack": "",
+              "evidence": "Set-Cookie: htc_auth="
+            }
+          ],
+          "solution": "Whenever a cookie contains sensitive information or is a session token, it should always be sent using the Secure flag.",
+          "reference": "https://owasp.org/www-community/controls/SecureCookieAttribute",
+          "cweid": "614",
+          "wascid": "13"
+        },
+        {
+          "pluginId": "10036",
+          "alertRef": "10036",
+          "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+          "name": "Server Leaks Version Information",
+          "riskcode": "1",
+          "confidence": "3",
+          "riskdesc": "Low (High)",
+          "desc": "The web/application server discloses version details in the Server HTTP header field.",
+          "instances": [
+            {
+              "uri": "https://api.healthtechconnect.io/v1/health",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "Server: nginx/1.25.3"
+            }
+          ],
+          "solution": "Disable server tokens in the web server configuration (e.g. server_tokens off; in Nginx).",
+          "reference": "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/02-Fingerprint_Web_Server",
+          "cweid": "200",
+          "wascid": "13"
+        }
+      ]
+    }
+  ]
+}

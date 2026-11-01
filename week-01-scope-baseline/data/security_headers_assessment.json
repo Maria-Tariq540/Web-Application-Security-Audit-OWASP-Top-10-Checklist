@@ -1,0 +1,103 @@
+{
+  "scan_metadata": {
+    "target": "https://portal.healthtechconnect.io",
+    "timestamp": "2026-11-01T18:50:00.000Z",
+    "engine": "Mozilla Observatory Engine / cURL",
+    "initial_score": 0,
+    "initial_grade": "F",
+    "target_grade": "A+",
+    "tests_passed": 1,
+    "tests_failed": 10,
+    "tests_quantity": 11
+  },
+  "headers_evaluated": {
+    "content-security-policy": {
+      "name": "Content-Security-Policy",
+      "present": false,
+      "value": null,
+      "score_modifier": -25,
+      "recommendation": "default-src 'self'; script-src 'self' 'nonce-rAnd0m123'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.healthtechconnect.io wss://stream.healthtechconnect.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
+      "status": "FAIL"
+    },
+    "strict-transport-security": {
+      "name": "Strict-Transport-Security",
+      "present": false,
+      "value": null,
+      "score_modifier": -20,
+      "recommendation": "max-age=63072000; includeSubDomains; preload",
+      "status": "FAIL"
+    },
+    "x-frame-options": {
+      "name": "X-Frame-Options",
+      "present": false,
+      "value": null,
+      "score_modifier": -20,
+      "recommendation": "DENY",
+      "status": "FAIL"
+    },
+    "x-content-type-options": {
+      "name": "X-Content-Type-Options",
+      "present": false,
+      "value": null,
+      "score_modifier": -5,
+      "recommendation": "nosniff",
+      "status": "FAIL"
+    },
+    "referrer-policy": {
+      "name": "Referrer-Policy",
+      "present": false,
+      "value": "no-referrer-when-downgrade",
+      "score_modifier": -10,
+      "recommendation": "strict-origin-when-cross-origin",
+      "status": "FAIL"
+    },
+    "permissions-policy": {
+      "name": "Permissions-Policy",
+      "present": false,
+      "value": null,
+      "score_modifier": -10,
+      "recommendation": "camera=(self), microphone=(self), geolocation=(), payment=()",
+      "status": "FAIL"
+    },
+    "cross-origin-opener-policy": {
+      "name": "Cross-Origin-Opener-Policy",
+      "present": false,
+      "value": null,
+      "score_modifier": -5,
+      "recommendation": "same-origin",
+      "status": "FAIL"
+    },
+    "cross-origin-resource-policy": {
+      "name": "Cross-Origin-Resource-Policy",
+      "present": false,
+      "value": null,
+      "score_modifier": -5,
+      "recommendation": "same-origin",
+      "status": "FAIL"
+    },
+    "cross-origin-embedder-policy": {
+      "name": "Cross-Origin-Embedder-Policy",
+      "present": false,
+      "value": null,
+      "score_modifier": -5,
+      "recommendation": "require-corp",
+      "status": "FAIL"
+    },
+    "server": {
+      "name": "Server",
+      "present": true,
+      "value": "nginx/1.25.3",
+      "score_modifier": 0,
+      "recommendation": "Suppress or mask version token (server_tokens off;)",
+      "status": "FAIL"
+    },
+    "x-powered-by": {
+      "name": "X-Powered-By",
+      "present": false,
+      "value": null,
+      "score_modifier": 0,
+      "recommendation": "Header correctly absent",
+      "status": "PASS"
+    }
+  }
+}

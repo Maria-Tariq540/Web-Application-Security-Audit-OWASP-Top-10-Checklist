@@ -1,0 +1,31 @@
+{
+  "context": {
+    "name": "HealthTech-Connect-Staging",
+    "description": "ZAP Context configuration for HealthTech Connect staging environment",
+    "urls": [
+      "https://portal.healthtechconnect.io.*",
+      "https://api.healthtechconnect.io/v1.*"
+    ],
+    "excludeUrls": [
+      "https://portal.healthtechconnect.io/assets/.*\\.(png|jpg|jpeg|gif|svg|woff|woff2|ico)",
+      "https://api.healthtechconnect.io/v1/auth/logout.*",
+      "https://api.healthtechconnect.io/v1/auth/reset-password.*",
+      "https://api.healthtechconnect.io/v1/billing/process-payment.*"
+    ],
+    "authentication": {
+      "method": "json",
+      "loginUrl": "https://api.healthtechconnect.io/v1/auth/login",
+      "loginRequestBody": "{\"email\":\"auditor_test_user@healthtechconnect.io\",\"password\":\"${AUDIT_TEST_PWD}\"}",
+      "tokenPath": "data.tokens.access_token"
+    },
+    "sessionManagement": {
+      "method": "httpAuthHeader",
+      "headerName": "Authorization",
+      "headerPrefix": "Bearer "
+    },
+    "authorization": {
+      "type": "status_code",
+      "unauthorizedStatusCode": 401
+    }
+  }
+}
