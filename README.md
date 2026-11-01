@@ -406,7 +406,7 @@ npx observatory-cli portal.healthtechconnect.io --format=report
 
 ## 8. Author & License
 
-- **Lead Security Auditor & DevSecOps Engineer**: [Your Name / GitHub Profile](https://github.com/your-username)
+- **Lead Security Auditor & DevSecOps Engineer**: [Maria Tariq / GitHub Profile](https://github.com/Maria-Tariq540)
 - **Role**: Lead Web Security Auditor & DevSecOps Engineer
 - **Project Classification**: Enterprise Portfolio Deliverable (500 Leaderboard Points)
 - **License**: Distributed under the **MIT License**. See `LICENSE` for more information.
